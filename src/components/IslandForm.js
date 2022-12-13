@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const IslandForm = ({islands, onFormSubmit}) => {
+const IslandForm = ({islands, onIslandFormSubmit}) => {
     const[islandChoice, setIslandChoice] = useState('');
 
     const handleIslandChoiceChange = (event) => {
@@ -12,7 +12,7 @@ const IslandForm = ({islands, onFormSubmit}) => {
         const payload = {
             islandChoice
         }
-        onFormSubmit(payload);
+        onIslandFormSubmit(payload);
         resetForm();
     }
 
@@ -22,13 +22,15 @@ const IslandForm = ({islands, onFormSubmit}) => {
 
     const islandChoices = islands.map((island) => {
         return (
-        <option value={island}>{island['name']}</option>
+            <option value={island['id']}>{island['name']}</option>
         )
+
+        //<option value={island}>{island['name']}</option>
     })
 
     return (
         <>
-        {islands}
+        
         <form onSubmit={handleFormSubmit}>
 
             <label htmlFor="islandChoice">Island: </label>
